@@ -1,0 +1,23 @@
+section .text
+global _start
+
+_start: 
+mov eax,[x]
+mov ebx,[y]
+mov ecx,[z]
+call _addition
+mov [result],eax
+mov eax,1
+int 0x80
+
+_addition:
+add eax,ebx
+add eax,ecx 
+ret
+
+section .data
+x DD 5
+y DD 7
+z DD 8
+segment .bss
+result resb 1
